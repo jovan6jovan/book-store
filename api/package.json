@@ -1,0 +1,24 @@
+{
+  "name": "sequelize-book-store",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  },
+  "dependencies": {
+    "koa": "^2.13.0",
+    "koa-body-parser": "^1.1.2",
+    "koa-cors": "0.0.16",
+    "koa-router": "^9.4.0",
+    "pg": "^8.4.2",
+    "sequelize": "^6.3.5",
+    "sequelize-cli": "^6.2.0"
+  }
+}
