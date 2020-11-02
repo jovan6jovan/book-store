@@ -13,9 +13,8 @@ const router = () => {
     ctx.body = "Hello world";
   });
 
-  router.get("/users", async (ctx, next) => {
+  router.get("/users", async (ctx) => {
     ctx.body = await usersController.allUsers();
-    next();
   });
 
   router.get("/users/:id", async (ctx) => {
