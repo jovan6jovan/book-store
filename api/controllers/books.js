@@ -9,7 +9,7 @@ module.exports.allBooks = async () => {
   }
 };
 
-module.exports.saveUserBook = async (bookId, userId) => {
+module.exports.saveBookToUserReadingList = async (bookId, userId) => {
   try {
     const result = await models.Book.findByPk(bookId);
     return result.addReader(userId);

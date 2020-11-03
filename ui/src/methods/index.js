@@ -1,5 +1,5 @@
-export const postUserBook = (url, bookId, userId) => {
-  fetch(`${url}?bookId=${bookId}&userId=${userId}`, {
+export const postBookToReadingList = (url, bookId, userId) => {
+  fetch(`${url}`, {
     method: "POST",
     mode: "no-cors",
     headers: {
@@ -8,7 +8,8 @@ export const postUserBook = (url, bookId, userId) => {
       "Access-Control-Allow-Origin": "*",
     },
     body: JSON.stringify({
-      'text': 'UserBook posted successfully'
+      bookId,
+      userId
     })
   })
     .then((res) => res.json())
@@ -16,15 +17,18 @@ export const postUserBook = (url, bookId, userId) => {
     .catch((err) => console.log(err));
 };
 
-export const updateUserBook = (url, bookId, bookTitle, userId) => {
-  fetch(`${url}?bookId=${bookId}&bookTitle=${bookTitle}&userId=${userId}`, {
+export const updateUserFavBook = (url, bookId, bookTitle, userId) => {
+  fetch(`${url}`, {
     method: "PUT",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
     },
     body: JSON.stringify({
-      'text': 'UserBook updated successfully'
+      bookId,
+      bookTitle,
+      userId
     })
   })
     .then((res) => res.json())
@@ -33,7 +37,7 @@ export const updateUserBook = (url, bookId, bookTitle, userId) => {
 };
 
 export const postUser = (url, name) => {
-  fetch(`${url}?name=${name}`, {
+  fetch(`${url}`, {
     method: "POST",
     mode: "no-cors",
     headers: {
@@ -42,7 +46,7 @@ export const postUser = (url, name) => {
       "Access-Control-Allow-Origin": "*",
     },
     body: JSON.stringify({
-      'text': 'User added successfully'
+      name
     })
   })
     .then((res) => res.json())
@@ -51,7 +55,7 @@ export const postUser = (url, name) => {
 };
 
 export const postBook = (url, title, author, year) => {
-  fetch(`${url}?title=${title}&author=${author}&year=${year}`, {
+  fetch(`${url}`, {
     method: "POST",
     mode: "no-cors",
     headers: {
@@ -60,7 +64,9 @@ export const postBook = (url, title, author, year) => {
       "Access-Control-Allow-Origin": "*",
     },
     body: JSON.stringify({
-      'text': 'Book added successfully'
+      title,
+      author,
+      year
     })
   })
     .then((res) => res.json())

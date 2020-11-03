@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { InputLabel, MenuItem, FormControl, Select } from "@material-ui/core";
-import { postUserBook, updateUserBook } from "../../methods";
+import { postBookToReadingList, updateUserFavBook } from "../../methods";
 
 // components
 import { AppConsumer } from "../../context";
@@ -25,15 +25,17 @@ const SelectBook = ({ label, userId }) => {
   };
 
   const handleClick = () => {
+    const idOfTheUser = Number(userId);
+
     if (label === "Add to reading") {
-      postUserBook("http://localhost:8000/saveUserBook", bookId, userId);
+      postBookToReadingList("http://localhost:8000/saveBookToUserReadingList", bookId, idOfTheUser);
     }
     if (label === "Favorite Book") {
-      updateUserBook(
-        "http://localhost:8000/saveUserFav",
+      updateUserFavBook(
+        "http://localhost:8000/saveUserFavBook",
         bookId,
         bookTitle,
-        userId
+        idOfTheUser
       );
     }
   };

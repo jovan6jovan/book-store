@@ -27,19 +27,19 @@ const router = () => {
     ctx.body = await booksController.allBooks();
   });
 
-  router.post("/saveUserBook", async (ctx) => {
-    const bookId = ctx.request.query.bookId;
-    const userId = ctx.request.query.userId;
+  router.post("/saveBookToUserReadingList", async (ctx) => {
+    const bookId = JSON.parse(ctx.request.body).bookId;
+    const userId = JSON.parse(ctx.request.body).userId;
 
-    ctx.body = await booksController.saveUserBook(bookId, userId);
+    ctx.body = await booksController.saveBookToUserReadingList(bookId, userId);
   });
 
-  router.put("/saveUserFav", async (ctx) => {
-    const bookId = ctx.request.query.bookId;
-    const bookTitle = ctx.request.query.bookTitle;
-    const userId = ctx.request.query.userId;
-
-    ctx.body = await singleUserController.saveUserFav(
+  router.put("/saveUserFavBook", async (ctx) => {
+    const bookId = ctx.request.body.bookId;
+    const bookTitle = ctx.request.body.bookTitle;
+    const userId = ctx.request.body.userId;
+    
+    ctx.body = await singleUserController.saveUserFavBook(
       bookId,
       bookTitle,
       userId
@@ -47,15 +47,15 @@ const router = () => {
   });
 
   router.post("/addUser", async (ctx) => {
-    const name = ctx.request.query.name;
+    const name = JSON.parse(ctx.request.body).name;
 
     ctx.body = await singleUserController.addUser(name);
   });
 
   router.post("/addBook", async (ctx) => {
-    const title = ctx.request.query.title;
-    const author = ctx.request.query.author;
-    const year = ctx.request.query.year;
+    const title = JSON.parse(ctx.request.body).title;
+    const author = JSON.parse(ctx.request.body).author;
+    const year = JSON.parse(ctx.request.body).year;
 
     ctx.body = await booksController.addBook(title, author, year);
   });

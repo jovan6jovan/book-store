@@ -21,7 +21,7 @@ module.exports.singleUser = async (id) => {
   }
 };
 
-module.exports.saveUserFav = async (bookId, bookTitle, userId) => {
+module.exports.saveUserFavBook = async (bookId, bookTitle, userId) => {
   try {
     const result = await models.Favorite.create({
       id: bookId,

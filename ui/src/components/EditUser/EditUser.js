@@ -23,7 +23,13 @@ const EditUser = (props) => {
   const API = `http://localhost:8000/users/${userId}`;
 
   useEffect(() => {
-    fetch(API)
+    fetch(API, {
+      headers: {
+        Accept: {
+          "Access-Control-Allow-Origin": "*"
+        }
+      }
+    })
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
