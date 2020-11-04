@@ -1,7 +1,6 @@
 export const postBookToReadingList = (url, bookId, userId) => {
   fetch(`${url}`, {
     method: "POST",
-    mode: "no-cors",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -39,7 +38,6 @@ export const updateUserFavBook = (url, bookId, bookTitle, userId) => {
 export const postUser = (url, name) => {
   fetch(`${url}`, {
     method: "POST",
-    mode: "no-cors",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -57,7 +55,6 @@ export const postUser = (url, name) => {
 export const postBook = (url, title, author, year) => {
   fetch(`${url}`, {
     method: "POST",
-    mode: "no-cors",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",

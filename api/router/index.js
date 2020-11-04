@@ -28,8 +28,8 @@ const router = () => {
   });
 
   router.post("/saveBookToUserReadingList", async (ctx) => {
-    const bookId = JSON.parse(ctx.request.body).bookId;
-    const userId = JSON.parse(ctx.request.body).userId;
+    const bookId = ctx.request.body.bookId;
+    const userId = ctx.request.body.userId;
 
     ctx.body = await booksController.saveBookToUserReadingList(bookId, userId);
   });
@@ -47,15 +47,15 @@ const router = () => {
   });
 
   router.post("/addUser", async (ctx) => {
-    const name = JSON.parse(ctx.request.body).name;
+    const name = ctx.request.body.name;
 
     ctx.body = await singleUserController.addUser(name);
   });
 
   router.post("/addBook", async (ctx) => {
-    const title = JSON.parse(ctx.request.body).title;
-    const author = JSON.parse(ctx.request.body).author;
-    const year = JSON.parse(ctx.request.body).year;
+    const title = ctx.request.body.title;
+    const author = ctx.request.body.author;
+    const year = ctx.request.body.year;
 
     ctx.body = await booksController.addBook(title, author, year);
   });
